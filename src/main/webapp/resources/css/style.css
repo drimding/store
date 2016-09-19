@@ -1,0 +1,158 @@
+ /*Empty CSS file for your own CSS*/
+ .dual-list .list-group {
+     max-height:900px;
+     min-height: 900px;
+     overflow: scroll;
+     margin-top: 8px;
+ }
+
+ .list-left li, .list-right li {
+     cursor: pointer;
+ }
+
+ .list-arrows {
+     padding-top: 100px;
+ }
+
+ .list-arrows button {
+     margin-bottom: 20px;
+ }
+ .list-group-item:hover{
+     background: #98FB98;
+
+ }
+ .list-group-item{
+     padding: 3px 15px;
+ }
+ .list-group-item a{
+     text-decoration: none;
+     display:block;
+
+ }
+ .row{
+     padding: 3px;
+ }
+ .product-block{
+     background-color: #f5f5f5;
+     border-radius: 5px;
+     padding: 4px;
+
+ }
+
+
+
+
+ .table>tbody>tr>td, .table>tfoot>tr>td{
+     vertical-align: middle;
+ }
+ @media screen and (max-width: 600px) {
+     table#cart tbody td .form-control{
+         width:20%;
+         display: inline !important;
+     }
+     .actions .btn{
+         width:36%;
+         margin:1.5em 0;
+     }
+
+     .actions .btn-info{
+         float:left;
+     }
+     .actions .btn-danger{
+         float:right;
+     }
+
+     table#cart thead { display: none; }
+     table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+     table#cart tbody tr td:first-child { background: #333; color: #fff; }
+     table#cart tbody td:before {
+         content: attr(data-th); font-weight: bold;
+         display: inline-block; width: 8rem;
+     }
+
+
+
+     table#cart tfoot td{display:block; }
+     table#cart tfoot td .btn{display:block;}
+
+ }
+
+
+
+
+ html {
+     position: relative;
+     min-height: 100%;
+ }
+ body {
+     /* Margin bottom by footer height */
+     margin-bottom: 60px;
+ }
+ .footer {
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     /* Set the fixed height of the footer here */
+     height: 60px;
+     background-color: #f5f5f5;
+
+ }
+
+
+
+ /*drop down*/
+ body{
+     /*background:url('http://www.wallpaperup.com/uploads/wallpapers/2012/10/21/20181/cad2441dd3252cf53f12154412286ba0.jpg');
+     padding:50px;*/
+ }
+
+ #login-dp{
+     min-width: 250px;
+     padding: 14px 14px 0;
+     overflow:hidden;
+     background-color:rgba(255,255,255,.8);
+ }
+ #login-dp .help-block{
+     font-size:12px
+ }
+ #login-dp .bottom{
+     background-color:rgba(255,255,255,.8);
+     border-top:1px solid #ddd;
+     clear:both;
+     padding:14px;
+ }
+ #login-dp .social-buttons{
+     margin:12px 0
+ }
+ #login-dp .social-buttons a{
+     width: 49%;
+ }
+ #login-dp .form-group {
+     margin-bottom: 10px;
+ }
+ .btn-fb{
+     color: #fff;
+     background-color:#3b5998;
+ }
+ .btn-fb:hover{
+     color: #fff;
+     background-color:#496ebc
+ }
+ .btn-tw{
+     color: #fff;
+     background-color:#55acee;
+ }
+ .btn-tw:hover{
+     color: #fff;
+     background-color:#59b5fa;
+ }
+ @media(max-width:768px){
+     #login-dp{
+         background-color: inherit;
+         color: #fff;
+     }
+     #login-dp .bottom{
+         background-color: inherit;
+         border-top:0 none;
+     }
+ }

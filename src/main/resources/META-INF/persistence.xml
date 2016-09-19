@@ -6,9 +6,12 @@
              version="2.1">
     <persistence-unit name="primary" transaction-type="RESOURCE_LOCAL">
 
-       <!-- <class>org.dreamcatcher.listener.entity.Phs</class>-->
-
-
+        <class>org.dreamcatcher.shop.entity.Products</class>
+        <class>org.dreamcatcher.shop.entity.Manufacturer</class>
+        <class>org.dreamcatcher.shop.entity.ProductCategory</class>
+        <class>org.dreamcatcher.shop.entity.Basket</class>
+        <class>org.dreamcatcher.shop.entity.User</class>
+        <class>org.dreamcatcher.shop.entity.Orders</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
@@ -16,7 +19,7 @@
             <property name="hibernate.connection.username" value="root" />
             <property name="hibernate.connection.password" value="" />
 
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
         </properties>
     </persistence-unit>

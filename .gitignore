@@ -1,5 +1,4 @@
 target/
 out/
-
-
-
+gmail.com.properties
+src/main/resources/META-INF/gmail.com.properties

@@ -25,6 +25,34 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"></property>
     </bean>
+
+    <!-- Настройки gmail.com -->
+    <context:property-placeholder location="classpath:/META-INF/gmail.com.properties"
+                                  ignore-unresolvable="true" />
+
+    <!-- Класс для отправки писем. -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtps.auth">${mail.smtps.auth}</prop>
+                <prop key="mail.transport.protocol">${mail.protocol}</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+        <property name="host" value="${mail.host}" />
+        <property name="port" value="${mail.port}" />
+        <property name="username" value="${mail.username}" />
+        <property name="password" value="${mail.password}" />
+        <property name="protocol" value="${mail.protocol}" />
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <!-- Шаблон письма -->
+    <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="${mail.from}" />
+        <property name="subject" value="Mail subject" />
+    </bean>
+
     <tx:annotation-driven transaction-manager="transactionManager" />
     <jpa:repositories base-package="org.dreamcatcher.shop.dao" />
 
