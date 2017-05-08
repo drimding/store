@@ -138,7 +138,6 @@ public class CustomUser {
                 ", city='" + city + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
-                ", orderses=" + orderses +
                 '}';
     }
 }

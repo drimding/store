@@ -1,31 +1,33 @@
 package org.dreamcatcher.shop.entity;
 
+import sun.util.resources.LocaleData;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 /**
- * Created by dreamcatcher on 09.09.16.
+ * Created by dreamcatcher on 19/09/16.
  */
 @Entity
 public class Orders {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
-    private Integer amount;
-    @Column(nullable = false)
-    private Double priceUSD;
-    @Column(nullable = false)
-    private Double totalPrice;
-    @Column(nullable = false, columnDefinition="boolean default false")
-    private boolean verification;
+
+    @Column(columnDefinition = "DATETIME")
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime dateTime;
     @Column(nullable = false, columnDefinition="boolean default false")
     private boolean implementation;
+    @Column(nullable = false, columnDefinition="boolean default false")
+    private boolean verification;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private CustomUser customUser;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Products product;
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "orders")
+    private List<OrdersDetail> ordersDetailList;
 
     public Orders() {
     }
@@ -38,28 +40,22 @@ public class Orders {
         this.id = id;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
-    public Double getPriceUSD() {
-        return priceUSD;
+
+
+    public boolean isImplementation() {
+        return implementation;
     }
 
-    public void setPriceUSD(Double priceUSD) {
-        this.priceUSD = priceUSD;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setImplementation(boolean implementation) {
+        this.implementation = implementation;
     }
 
     public boolean isVerification() {
@@ -70,27 +66,31 @@ public class Orders {
         this.verification = verification;
     }
 
-    public boolean isImplementation() {
-        return implementation;
-    }
-
-    public void setImplementation(boolean implementation) {
-        this.implementation = implementation;
-    }
-
-    public CustomUser getUser() {
+    public CustomUser getCustomUser() {
         return customUser;
     }
 
-    public void setUser(CustomUser buyer) {
-        this.customUser = buyer;
+    public void setCustomUser(CustomUser customUser) {
+        this.customUser = customUser;
     }
 
-    public Products getProduct() {
-        return product;
+    public List<OrdersDetail> getOrdersDetailList() {
+        return ordersDetailList;
     }
 
-    public void setProduct(Products product) {
-        this.product = product;
+    public void setOrdersDetailList(List<OrdersDetail> ordersDetailList) {
+        this.ordersDetailList = ordersDetailList;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", dateTime=" + dateTime +
+                ", implementation=" + implementation +
+                ", verification=" + verification +
+                ", customUser=" + customUser +
+                ", ordersDetailList=" + ordersDetailList +
+                '}';
     }
 }

@@ -10,9 +10,11 @@ import org.dreamcatcher.shop.entity.CustomUser;
 import org.dreamcatcher.shop.enums.Errors;
 import org.dreamcatcher.shop.service.UserService;
 
+import org.dreamcatcher.shop.session.CustomSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,6 +27,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     MailMail mailMail;
+    @Autowired
+    CustomSession customSession;
 
 
     public Errors createNewUser(String firstName, String lastName, String email, String password, String address, String city, String phone, String permission) {
@@ -47,7 +51,16 @@ public class UserServiceImpl implements UserService {
                           "З допомогою даного логіна і пароля, ви завжди зможете переглянути історію замовлень");
 
         }
+        customSession.setAuthentication(email, password);
         return Errors.ok;
+    }
+
+    public CustomUser getCurrentUser() {
+        if(!(customSession.getAuthentication()
+                instanceof AnonymousAuthenticationToken)){
+            return customUsersDAO.findLoginByEmail(customSession.getAuthentication().getName());
+        }
+        return null;
     }
 
 }

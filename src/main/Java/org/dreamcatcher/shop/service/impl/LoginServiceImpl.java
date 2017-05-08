@@ -30,10 +30,10 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         CustomUser user = null;
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
         try {
-            System.out.println(userName.toLowerCase());
+
             user = usersDao.findLoginByEmail(userName.toLowerCase());
             authorities.add(new SimpleGrantedAuthority("ROLE_"+user.getPermission()));
-            System.out.println(user);
+
         }catch (NoResultException e)
         {
             System.out.println("findLoginByEmail NoResultException");

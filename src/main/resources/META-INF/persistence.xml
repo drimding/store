@@ -10,7 +10,7 @@
         <class>org.dreamcatcher.shop.entity.Manufacturer</class>
         <class>org.dreamcatcher.shop.entity.ProductCategory</class>
         <class>org.dreamcatcher.shop.entity.Basket</class>
-        <class>org.dreamcatcher.shop.entity.User</class>
+        <class>org.dreamcatcher.shop.entity.CustomUser</class>
         <class>org.dreamcatcher.shop.entity.Orders</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

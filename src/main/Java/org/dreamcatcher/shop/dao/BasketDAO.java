@@ -21,11 +21,6 @@ public interface BasketDAO extends JpaRepository <Basket, Integer>{
     @Query("SELECT b FROM Basket b JOIN FETCH b.product pr JOIN FETCH pr.productCategory WHERE b.sessionId=?1")
     List<Basket> findAllItemsBySessionId(String SessionId);
 
-
-    @Modifying
-    @Query(value = "INSERT INTO Basket  (product_id, sessionId, quantity) VALUES (?1, ?2, ?3)", nativeQuery = true)
-    void insertItemInBasket(Products product, String sessionId, Integer amount);
-
     @Modifying
     @Transactional
     @Query("DELETE FROM Basket b WHERE b.sessionId=?1 AND b.id=?2")
@@ -35,4 +30,9 @@ public interface BasketDAO extends JpaRepository <Basket, Integer>{
     @Transactional
     @Query("UPDATE Basket b SET b.quantity=?1 WHERE b.id=?2 AND b.sessionId=?3")
     void updateQuantityInBasket (int quantity, int id, String sessionId);
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Basket b WHERE b.sessionId=?1")
+    void clearBasketBySessionId(String sessionID);
 }

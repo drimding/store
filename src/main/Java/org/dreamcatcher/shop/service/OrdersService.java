@@ -1,5 +1,8 @@
 package org.dreamcatcher.shop.service;
 
+import org.dreamcatcher.shop.entity.Orders;
+import org.dreamcatcher.shop.entity.OrdersDetail;
+
 import java.util.List;
 
 /**
@@ -7,5 +10,5 @@ import java.util.List;
  */
 public interface OrdersService {
     void createOrder();
-    List<OrdersService>  getAllOrders();
+    List<OrdersDetail>  getOrdersByUserId();
 }

@@ -29,19 +29,19 @@ public class Products {
     @OneToMany (fetch = FetchType.LAZY, mappedBy = "product")
     private List<Basket> baskets;
     @OneToMany (fetch = FetchType.LAZY, mappedBy = "product")
-    private List<Orders> orderses;
+    private List<OrdersDetail> ordersDetail;
 
 
 
     public Products() {
     }
 
-    public List<Orders> getOrderses() {
-        return orderses;
+    public List<OrdersDetail> getOrdersDetail() {
+        return ordersDetail;
     }
 
-    public void setOrderses(List<Orders> orderses) {
-        this.orderses = orderses;
+    public void setOrdersDetail(List<OrdersDetail> ordersDetail) {
+        this.ordersDetail = ordersDetail;
     }
 
     public List<Basket> getBaskets() {
@@ -146,7 +146,7 @@ public class Products {
                 ", productCode=" + productCode +
                 ", warranty=" + warranty +
                 ", baskets=" + baskets +
-                ", orderses=" + orderses +
+                ", orderses=" + ordersDetail +
                 '}';
     }
 }
